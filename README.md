@@ -66,12 +66,12 @@ codex://pets/install?name=Naiwa&imageUrl=https%3A%2F%2Fraw.githubusercontent.com
 ```text
 pets/naiwa/       可直接安装的 pet.json + spritesheet.png
 media/           动画、总览图、封面
-media/tiktok/    7 张竖版宣传图、32 秒视频与发布文案
+media/tiktok/    7 张竖版宣传图、30 秒视频与发布文案
 scripts/         安装、校验、宣传素材生成脚本
 docs/            版本与质量说明
 ```
 
-图组中的桌面场景是**使用效果示意，不是 Codex 界面实录**。状态动画和注视动画均来自发布包中的真实精灵图。动画由宿主应用触发；该项目不修改模型能力。
+图组中的桌面场景是**使用效果示意，不是 Codex 界面实录**。状态动画和注视动画基于发布包中的真实精灵图，宣传视频另作平滑与转场处理。动画由宿主应用触发；该项目不修改模型能力。
 
 ## 开发与验证
 
@@ -89,3 +89,5 @@ python scripts/render_media.py
 Windows 使用 `.venv\Scripts\activate`。渲染脚本默认使用 macOS 字体；其他系统通过 `NAIWA_FONT` 指向支持中文的字体文件、`NAIWA_LATIN_FONT` 指向拉丁字体文件。
 
 代码采用 MIT 许可；角色图像、动画及其衍生宣传素材的使用范围见 [ASSETS.md](ASSETS.md)。这是独立社区项目。
+
+宣传视频采用简洁的 60fps 竖屏版本，无二维码。直接重建：`python scripts/render_minimal_video.py`。可用外部 [RIFE ncnn Vulkan](https://github.com/nihui/rife-ncnn-vulkan) 生成平滑视频帧：先运行 `scripts/prepare_smooth_frames.py --help`，再用 `--smooth-frames <目录>` 传给视频渲染脚本。模型与处理器不随仓库分发。

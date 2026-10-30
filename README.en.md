@@ -22,6 +22,8 @@ The nine states are idle, move right, move left, wave, jump, failure, waiting fo
 
 [All-state contact sheet](media/all-states.png) · [Animation GIFs](media/animations/) · [TikTok campaign](media/tiktok/)
 
-Promotional desktop scenes are clearly labeled illustrations, not app recordings. All character animation comes from the actual release sprite. This independent community project changes appearance, not model behavior.
+Promotional desktop scenes are clearly labeled illustrations, not app recordings. Character animation is based on the release sprite; the promotional video adds smoothing and eased transitions. This independent community project changes appearance, not model behavior.
 
 Code: MIT. Artwork usage: [ASSETS.md](ASSETS.md).
+
+The minimal promotional video is 30 seconds at 60fps, with no QR codes or in-scene labels.

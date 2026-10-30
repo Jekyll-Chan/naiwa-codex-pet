@@ -3,39 +3,77 @@
     1080,
     1920
   ],
-  "duration": 32,
-  "fps": 24,
-  "audio": "none; add a licensed sound in TikTok",
+  "duration": 30,
+  "fps": 60,
+  "style": "minimal; no QR; text only in intro and outro",
+  "motion": "continuous eased staging, full source action cycles; RIFE-interpolated character loops",
+  "audio": "none",
   "scenes": [
     {
-      "from": 0,
-      "to": 4,
-      "scene": "Meet Naiwa"
+      "from": 0.0,
+      "to": 3.0,
+      "state": "idle",
+      "kind": "intro"
     },
     {
-      "from": 4,
-      "to": 8,
-      "scene": "Illustrated usage, not app footage"
+      "from": 3.0,
+      "to": 5.4,
+      "state": "waving",
+      "kind": "wave"
     },
     {
-      "from": 8,
-      "to": 17,
-      "scene": "All 9 animation states, one second each"
+      "from": 5.4,
+      "to": 8.0,
+      "state": "running-right",
+      "kind": "right"
     },
     {
-      "from": 17,
-      "to": 23,
-      "scene": "All 16 look directions, 0.375 seconds each"
+      "from": 8.0,
+      "to": 10.6,
+      "state": "running-left",
+      "kind": "left"
     },
     {
-      "from": 23,
-      "to": 28,
-      "scene": "All states together"
+      "from": 10.6,
+      "to": 13.0,
+      "state": "jumping",
+      "kind": "jump"
     },
     {
-      "from": 28,
-      "to": 32,
-      "scene": "GitHub and adoption CTA"
+      "from": 13.0,
+      "to": 15.5,
+      "state": "failed",
+      "kind": "failed"
+    },
+    {
+      "from": 15.5,
+      "to": 18.0,
+      "state": "waiting",
+      "kind": "waiting"
+    },
+    {
+      "from": 18.0,
+      "to": 20.5,
+      "state": "running",
+      "kind": "thinking"
+    },
+    {
+      "from": 20.5,
+      "to": 23.0,
+      "state": "review",
+      "kind": "review"
+    },
+    {
+      "from": 23.0,
+      "to": 27.0,
+      "state": "16-direction look",
+      "kind": "look"
+    },
+    {
+      "from": 27.0,
+      "to": 30.0,
+      "state": "waving",
+      "kind": "outro"
     }
   ]
 }

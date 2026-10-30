@@ -12,7 +12,6 @@ import sys
 import imageio.v2 as imageio
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-import qrcode
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "media"
@@ -164,13 +163,6 @@ def look_page(t=None):
     return im
 
 
-def qr(im,url,xy,size=220):
-    q=qrcode.QRCode(box_size=8,border=2,error_correction=qrcode.constants.ERROR_CORRECT_M)
-    q.add_data(url);q.make(fit=True)
-    pic=q.make_image(fill_color=INK,back_color=WHITE).convert("RGBA").resize((size,size),Image.Resampling.NEAREST)
-    im.alpha_composite(pic,xy)
-
-
 def cta(t=0):
     im=base(7,"TAKE NAIWA HOME")
     text(im,(64,235),"把奶蛙带回家。",76)
@@ -182,8 +174,6 @@ def cta(t=0):
     text(im,(100,1332),"naiwa-codex-pet",42,INK,True)
     text(im,(100,1427),"GitHub 下载 · 安装说明 · 全形态预览",27)
     text(im,(100,1490),"分享链接，也可以直接领养。",27,GREY)
-    qr(im,REPO,(726,1285),235)
-    text(im,(754,1540),"扫码查看项目",23,GREY)
     return im
 
 
@@ -244,25 +234,8 @@ def main():
     loop=[cell(9+i//8,i%8) for i in range(16)]
     loop[0].save(anim/"look-around.gif",save_all=True,append_images=loop[1:],duration=160,loop=0,disposal=2)
     if "--images-only" in sys.argv: return
-    fps=24;duration=32
-    # Video uses 12 distinct frames/sec, encoded as 24fps for upload compatibility.
-    with imageio.get_writer(TIKTOK/"naiwa-tiktok-1080x1920.mp4",fps=fps,codec="libx264",quality=8,macro_block_size=2,
-                            ffmpeg_params=["-pix_fmt","yuv420p","-movflags","+faststart"]) as writer:
-        for n in range(duration*12):
-            t=n/12
-            if t<4: im=cover(t)
-            elif t<8: im=desktop(t-4)
-            elif t<17: im=hero_state(min(8,int(t-8)),t-8)
-            elif t<23: im=look_video(t-17)
-            elif t<28: im=all_states(t-23)
-            else: im=cta(t-28)
-            arr=np.asarray(im.convert("RGB"));writer.append_data(arr);writer.append_data(arr)
-    (TIKTOK/"timeline.json").write_text(json.dumps({"size":[1080,1920],"duration":32,"fps":24,"audio":"none; add a licensed sound in TikTok", "scenes":[
-        {"from":0,"to":4,"scene":"Meet Naiwa"},{"from":4,"to":8,"scene":"Illustrated usage, not app footage"},
-        {"from":8,"to":17,"scene":"All 9 animation states, one second each"},
-        {"from":17,"to":23,"scene":"All 16 look directions, 0.375 seconds each"},
-        {"from":23,"to":28,"scene":"All states together"},{"from":28,"to":32,"scene":"GitHub and adoption CTA"}]},indent=2),encoding="utf-8")
-    print(TIKTOK)
+    from render_minimal_video import render
+    render()
 
 
 if __name__ == "__main__": main()
