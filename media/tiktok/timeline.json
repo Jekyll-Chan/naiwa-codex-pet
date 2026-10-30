@@ -1,0 +1,41 @@
+{
+  "size": [
+    1080,
+    1920
+  ],
+  "duration": 32,
+  "fps": 24,
+  "audio": "none; add a licensed sound in TikTok",
+  "scenes": [
+    {
+      "from": 0,
+      "to": 4,
+      "scene": "Meet Naiwa"
+    },
+    {
+      "from": 4,
+      "to": 8,
+      "scene": "Illustrated usage, not app footage"
+    },
+    {
+      "from": 8,
+      "to": 17,
+      "scene": "All 9 animation states, one second each"
+    },
+    {
+      "from": 17,
+      "to": 23,
+      "scene": "All 16 look directions, 0.375 seconds each"
+    },
+    {
+      "from": 23,
+      "to": 28,
+      "scene": "All states together"
+    },
+    {
+      "from": 28,
+      "to": 32,
+      "scene": "GitHub and adoption CTA"
+    }
+  ]
+}
